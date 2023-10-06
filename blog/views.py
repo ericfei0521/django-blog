@@ -98,7 +98,7 @@ def comment_approve(request, pk):
 
 ## remove comment ##
 @login_required
-def comment_approve(request, pk):
+def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     post_pk = comment.post.pk
     comment.delete()

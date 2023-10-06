@@ -1,9 +1,62 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Blog</title>
+        <!-- Bootstrap -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"
+        ></script>
+        <!-- Medium style editor -->
+        <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css"
+            type="text/css"
+            media="screen"
+            charset="utf-8"
+        />
+        <!-- custom css -->
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}" />
     </head>
-    <body></body>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/">My blog</a>
+                        <a href="{% url 'about' %}">About</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'post_new' %}">New Post</a></li>
+                <li><a href="{% url 'post_draft_list'%}">Drafts</a></li>
+                <li><a href="{% url 'logout'%}">logout</a></li>
+                {% else %}
+                <li><a class="nav navbar-right" href="{% url 'login' %}">login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <!-- content block -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="blog-posts">{% block content %} {% endblock %}</div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

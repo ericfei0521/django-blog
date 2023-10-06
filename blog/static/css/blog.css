@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,400&display=swap');
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+h1:hover {
+    animation: color-change 10s ease infinite;
+}
+.centerstage {
+    margin: 0 auto;
+}
+
+@keyframes color-change {
+    0% {
+        color: #4a0df2;
+    }
+    25% {
+        color: #eb0df2;
+    }
+    50% {
+        color: #0df224;
+    }
+    75% {
+        color: #f20d59;
+    }
+    100% {
+        color: #f20dd4;
+    }
+}

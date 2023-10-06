@@ -17,7 +17,7 @@ urlpatterns = [
     re_path(
         r"^drafts/$",
         views.DraftPostsView.as_view(),
-        name="post_drafts_list",
+        name="post_draft_list",
     ),
     re_path(
         r"^post/(?P<pk>\d+)/comment/$",
